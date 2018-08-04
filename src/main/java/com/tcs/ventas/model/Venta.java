@@ -11,12 +11,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Venta {
-	
+
 	private int codigo;
 	private BigDecimal total;
 	private Cliente cliente;
 	private List<VentaDetalle> listVentaDetalle;
-	
-	
 
 }

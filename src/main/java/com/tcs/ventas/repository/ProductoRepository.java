@@ -52,9 +52,7 @@ public class ProductoRepository {
 	}
 
 	public int update(Producto producto) {
-		String sql = "UPDATE t_producto SET"
-				+ " c_nombre_producto = ?,"
-				+ " c_precio_base = ?"
+		String sql = "UPDATE t_producto SET" + " c_nombre_producto = ?," + " c_precio_base = ?"
 				+ " WHERE c_codigo_producto = ?";
 		return jdbcTemplate.update(sql, producto.getNombre(), producto.getPrecio(), producto.getCodigo());
 	}

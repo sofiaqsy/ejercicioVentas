@@ -15,8 +15,6 @@ public class VentaRepository {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	
-	
 	public List<VentaDetalle> getVentaDetalleByIdVenta(int codigoVenta) {
 		String sql = "SELECT c_codigo_producto, c_precio_unitario, c_cantidad FROM t_venta_detalle"
 				+ " WHERE c_codigo_venta = ?";
@@ -29,20 +27,17 @@ public class VentaRepository {
 			return ventaDetalle;
 		}, codigoVenta);
 	}
-	
+
 	public Venta getVentaByCodigo(int codigoVenta) {
-		
-		String sql = "SELECT c_codigo_venta, c_total FROM t_venta"
-				+ " WHERE c_codigo_venta = ?";
+
+		String sql = "SELECT c_codigo_venta, c_total FROM t_venta" + " WHERE c_codigo_venta = ?";
 		return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> {
 			Venta venta = new Venta();
 			venta.setCodigo(rs.getInt("c_codigo_venta"));
 			venta.setTotal(rs.getBigDecimal("c_total"));
 			return venta;
 		}, codigoVenta);
-		
+
 	}
-	
-	
 
 }

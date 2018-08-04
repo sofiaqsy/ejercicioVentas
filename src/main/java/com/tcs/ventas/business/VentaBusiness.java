@@ -1,4 +1,4 @@
-package business;
+package com.tcs.ventas.business;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,31 +13,31 @@ import com.tcs.ventas.repository.VentaDetalleRepository;
 
 @Service
 public class VentaBusiness {
-	
+
 	@Autowired
 	private VentaDetalleRepository ventaDetalleRepository;
 	@Autowired
 	private ClienteRepository clienteRepository;
-	
+
 	public List<VentaDetalle> getVentaDetalleByIdVenta(int codigoVenta) {
 		return ventaDetalleRepository.getVentaDetalleByIdVenta(codigoVenta);
 	}
-	
-	public Venta getVentaByCodigoVenta( int codigoVenta ){
-		
-		Venta venta = new Venta();
-		
-		BigDecimal itemCost  = BigDecimal.ZERO;
-	    BigDecimal totalCost = BigDecimal.ZERO;
-	
-		List<VentaDetalle> ventaDetalle = ventaDetalleRepository.getVentaDetalleByIdVenta(codigoVenta);
-		  
-		for(VentaDetalle detalles : ventaDetalle) {
-			 itemCost  = detalles.getCantidad().multiply(detalles.getPrecioUnitario());
-		     totalCost = totalCost.add(itemCost);
-		     detalles.setSubTotal(itemCost);
-		}
 
+	public Venta getVentaByCodigoVenta(int codigoVenta) {
+
+		Venta venta = new Venta();
+
+		BigDecimal itemCost = BigDecimal.ZERO;
+		BigDecimal totalCost = BigDecimal.ZERO;
+
+		List<VentaDetalle> ventaDetalle = ventaDetalleRepository.getVentaDetalleByIdVenta(codigoVenta);
+
+		for (VentaDetalle detalles : ventaDetalle) {
+			itemCost = detalles.getCantidad().multiply(detalles.getPrecioUnitario());
+			totalCost = totalCost.add(itemCost);
+			detalles.setSubTotal(itemCost);
+		}
+		venta.setCodigo(codigoVenta);
 		venta.setTotal(totalCost);
 		venta.setCliente(clienteRepository.getClienteByCodigoVenta(codigoVenta));
 		venta.setListVentaDetalle(ventaDetalle);

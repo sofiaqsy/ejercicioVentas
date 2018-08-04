@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tcs.ventas.business.ProductoBusiness;
 import com.tcs.ventas.model.Producto;
-
-import business.ProductoBusiness;
 
 @RestController
 public class ProductoController {

@@ -1,4 +1,4 @@
-package business;
+package com.tcs.ventas.business;
 
 import java.util.List;
 
@@ -10,14 +10,14 @@ import com.tcs.ventas.repository.ClienteRepository;
 
 @Service
 public class ClienteBusiness {
-	
+
 	@Autowired
 	ClienteRepository clienteRepository;
-	
+
 	public List<Cliente> getAll() {
 		return clienteRepository.getAll();
 	}
-	
+
 	public Cliente getClienteByCodigoVenta(int codigoVenta) {
 		return clienteRepository.getClienteByCodigoVenta(codigoVenta);
 	}

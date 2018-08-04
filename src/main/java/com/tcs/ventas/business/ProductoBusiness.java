@@ -1,4 +1,4 @@
-package business;
+package com.tcs.ventas.business;
 
 import java.util.List;
 
