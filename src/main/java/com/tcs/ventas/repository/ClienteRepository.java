@@ -33,6 +33,7 @@ public class ClienteRepository {
 				+ " WHERE t_venta.c_codigo_venta = ?";
 		return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> {
 			Cliente cliente = new Cliente();
+			cliente.setCodigo(rs.getInt("c_codigo_cliente"));
 			cliente.setNombre(rs.getString("c_nombre_cliente"));
 			cliente.setApellidoPaterno(rs.getString("c_apellido_paterno_cliente"));
 			cliente.setApellidoMaterno(rs.getString("c_apellido_materno_cliente"));
