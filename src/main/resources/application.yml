@@ -1,0 +1,4 @@
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:/users/jared/Documents/tools/sqlite-tools-osx-x86-3240000/ventas.db
